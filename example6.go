@@ -14,14 +14,17 @@ func main() {
 	fmt.Println("length:", len(p1))
 	fmt.Println("capacity:", cap(p1))
 
-	var p2 []int = make([]int, 3)
+	var p2 []int = make([]int, 3) //here have given default 0 as the value for 3 length and 3 capacity
 	fmt.Println(p2)
 	fmt.Println("length:", len(p2))
 	fmt.Println("capacity:", cap(p2))
 
-	var p3 []int = make([]int, 3, 10)
+	var p3 []int = make([]int, 3, 10) //here have given default 0 as the value for 3 length and 10 capacity
 	fmt.Println(p3)
 	fmt.Println("length:", len(p3))
 	fmt.Println("capacity:", cap(p3))
+
+	p3 = append(p3, 12, 55, 10) //appending values
+	fmt.Println(p3)
 
 }
