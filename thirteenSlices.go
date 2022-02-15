@@ -23,6 +23,6 @@ func myslice2() {
 	var num = [8]int{3, 81, 51, 2, 33, 21, 22, 42}
 	var sl1 []int = num[2:5]
 	fmt.Println(sl1)
-	num[3] = 66
+	num[3] = 66 //When changing value in array, it will reflect in slice which uses that array
 	fmt.Println(sl1)
 }

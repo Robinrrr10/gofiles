@@ -1,0 +1,454 @@
+Go lang:
+--------
+--------
+--------
+
+Installation:
+
+type download go in google and download Eg: https://golang.org/dl/
+Then install it
+Then open command prompt or terminal and type below
+go
+If we get sub command then go is installed 
+If we get command not found or other error, then set environment variable of go
+Go to go installed directory and go to bin folder and there we can find go file
+Give that bin path in the environment variable.
+Now go command should work
+
+
+
+
+To run go file:
+
+go run filename.go
+
+
+To build
+go build filename.go
+
+//this will create executable file in current directory
+
+--------------------
+
+In go we cannot have unused variables or unused import
+
+
+Variables:
+-------
+bool
+string
+int
+int8
+int16
+int32
+int64
+uint   /uint is only positive numbers
+uint8
+uint16
+uint32
+uint64
+uintptr
+byte
+rune //unicode code points
+float32
+float64
+
+
+mensioning dataype is optional for golang
+we can create variable without value. 
+But we cannot create variable without value by removing datatype
+
+
+var num = 9 is equal to num := 9
+
+
+
+
+---------------------
+
+
+functions:
+----------
+multiple return is possible
+
+
+
+
+-------------------------------
+
+
+Loop:
+-----
+Go is having only for loop
+
+for{
+
+}
+
+This is infinite loop
+
+
+i := 1
+for i<=5{
+...
+i++
+}
+
+
+for i:=1;i<=5;i++{
+....
+}
+
+-------
+
+Exported Names
+--------------
+
+function name which starts with smallcase can be used only within the package. It cannot be used outside the package
+function name which starts with uppercase can be used outside the package
+If we want to function outside the package, then we need to use upper case in start letter of the function
+
+
+-----------------
+
+
+package and function variables:
+---------
+Variable which is defined inside package but outside function are package variable. It can be used in any method of the package
+Variable which is defined inside function are function variable. It can be used only in that function
+
+
+---------------
+
+Math package:
+------
+
+math package is used for different mathematical operation.
+There are so many inbuild fuctions are there
+
+-------------
+
+defer
+-----
+defer will be executed after  all lines of that method
+if any thing defined as defer, then that will execute at last
+If there are multiple values stored, then it will work like last in first out
+
+-----
+
+struct
+-----
+struct is like object
+
+
+----------
+
+
+Tutorial part -2
+---------------
+---------------
+
+
+To add command
+/* add your command here */
+
+---
+
+To print variable type
+
+fmt.Printf("variable x type is %T", x)
+
+
+---------
+
+Can give multiple datatype  in single line
+
+x, y, z := 12, true, "myname"
+
+
+----------
+
+switch:
+------
+Eg:
+
+x := 34
+switch {
+case x == 1:
+	fmt.Println("x is equal to1")
+cast x < 5:
+	fmt.Println("X less than 5")
+default:
+	fmt.Println("other num")
+}
+
+----------------
+
+operators are simular to java
+
+------------
+loop
+
+go lang support only for loop
+
+
+for i := 1; i< 10; i++ {
+
+}
+
+
+for i <= 10 {     //This loop is simular to while loop in java
+
+}
+
+
+for true  {  //infinite loop
+
+}
+
+-----
+
+break
+----
+break is used to break the loop and come out of the loop
+
+for i := 1; i<=10; i++ {
+ if i == 7 {
+	break
+ }
+}
+
+----
+
+continue
+-------
+
+continue is used to terminate current value of the loop and it will continue the loop
+
+for i := 1; i<=10; i++ {
+ if i == 7 {
+	continue
+ }
+}
+
+
+------
+
+function
+-------
+
+function should be define as func keyword
+
+function can have  multiple return type
+
+
+writing function in different vay
+
+var  max = func(x, y int) int {
+ if x > t {
+   return x 
+ } else {
+   return y
+ }
+}
+
+-------
+
+arrays:
+-------
+in go lang array has fixed size.
+by default  it will take the size of number of value it holds
+array is fixed size
+
+--------
+
+slices:
+------
+slices dont have fixed size
+when using range of array in a slice, it will just point the address of the index
+
+
+To get size of the slice give len(variablename) Eg: len(s)
+
+to print capacity give  cap(variablename)  //captacity is number of taken intial value to last value of the parent array
+
+var p []int = make([]int,3)  //here it will create slice with size 3 with all value 0
+
+var p []int = make([]int,3, 10) //create same like above but captacity is 10
+
+To appent
+num = append(num, 23, 89, 12) // now it will append 23, 89, 12 along with existing value
+
+-------------
+
+pointers
+---------
+
+var i int = 10
+fmt.Println(&i)    //&i will print address of i
+
+to declare pointer
+var ptr *int
+ptr = &i
+fmt.Println(*ptr) //To print value by giving address
+
+pointer to pointer
+
+var ptr *int
+var pptr **int
+ptr = &i
+pptr = &ptr
+fmt.Println(*ptr)
+fmt.Println(**pptr)
+
+------------------
+
+structs
+--------
+structs is like class
+structs is like pojo class
+
+type MyClass struct {
+
+}
+
+
+--------------------
+
+interface
+----------
+interface is used to give method signature
+like method name, return type and itsarugmet
+type Shape interface {
+
+}
+
+struct can implement from interface
+for implementing we not give any key word or anything
+When stuct method has same name of the interface, then implicitly it will implement from the interface
+----------------
+
+goroutines:
+-----------
+
+it is like multi threading.
+If we give go keyward when calling a function, then it wont wait till complete. it will start and move to next line
+Eg: go add(a, b)
+
+
+-----------------
+
+channels
+--------
+channel is used to give set of values and to receive the set of value later
+For channel we should give `chan` as the channel name
+chan is the keyword for channel
+example1:
+myChannel := make(chan string)
+go func() { myChannel <- "Hello" }()
+text := <-myChannel
+fmt.Println(text)
+
+example2:
+myChannel := make(chan string)
+go func() { 
+ myChannel <- "Hello"
+ myChannel <- "World"
+ }()
+fmt.Println(<-myChannel)
+fmt.Println(<-myChannel)
+
+---------
+
+defer
+-----
+used to postpone the function execution
+when calling a function if we use defer keyword before that, then that will be called at the  end of current function
+Eg: defer add(2, 4)
+if we use multiple defer then it will work as like last in first out
+
+
+-----------------
+
+
+File reading
+-----------
+data, err := ioutit.ReadFile("myfile.txt")
+if err != nil {
+	fmt.Println(err)
+ }
+fmt.Println(string(data))
+
+
+method 2:
+f, err := os.Open("myfile2.txt")
+defer f.Close()
+if err != nil {
+ fmt.Println(err)
+}
+reader := bufio.NewReader(f)
+b1, err := reader.Peek(10)
+if err != nil {
+ fmt.Println(err)
+}
+fmt.Println(string(b1))
+
+------------------
+
+File writing:
+------------
+
+message := []byte("Hello world")
+err := ioutil.WriteFile("myfile.txt", message, 0644)
+if err != nil {
+  fmt.Println(err)
+ }
+
+
+method 2:  //to create new file
+f, err: os.Create("newText.txt") //to create a new file
+defer f.Close()
+if err  != nil{
+  fmt.Println(err)
+ }
+f.WriteString("Hello friends!!!")
+f.Sync()
+
+w:= bufio.NewWriter(f)
+w.WriteString("How are you")     //to append in existing file
+w.Flush()
+
+----------
+
+working with json
+------------------
+
+func main() {
+ type Person struct {
+	Name string 'json:"name"'   //to give json variable name
+	Age int
+	Car []string
+  }
+ p1 := &Person{Name: "Ram", Age: 28, Car: []string{"tata", "dezire"}}
+ data, _ := json.Marshal(p1)   //converting pojo to json
+ fmt.Println(string(data))
+
+ data2 := '{"Name": "Arup", "Age": 18, "Car": ["pajero", "qualis"]}'
+ p2 := &Person{} //Better to give &. So that it will create object from reading the address
+ json. Unmarshal([]byte(data2), p2)  //converting json to pojo
+ fmt.Println(p2.Name)
+
+}
+
+
+------------
+
+Http servers:
+------------
+
+
+
+
+
+-----------
+-----------------------
